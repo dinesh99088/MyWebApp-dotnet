@@ -7,7 +7,7 @@ on:
     branches:
       - '*'
 env:
-  REGISTRY: "registry.digitalocean.com"
+  REGISTRY: "registry.digitalocean.com/cicd-project"
   IMAGE_NAME: "my-dotnet-app"
 
 jobs:
@@ -69,6 +69,7 @@ jobs:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   push_docker_image:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repo 
